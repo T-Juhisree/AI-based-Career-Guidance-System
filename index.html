@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Career Guidance</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f4f8;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #0077b6;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin: 10px 0 5px;
+    }
+    input, textarea, select, button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+    button {
+      background: #0077b6;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #023e8a;
+    }
+    .result {
+      background: #e9f5ff;
+      border-left: 4px solid #0077b6;
+      padding: 15px;
+      margin-top: 20px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>AI Career Guidance</h1>
+    <p>Enter your skills and interests to get career suggestions</p>
+  </header>
+
+  <div class="container">
+    <form id="careerForm">
+      <label for="name">Your Name</label>
+      <input type="text" id="name" placeholder="e.g. Ananya">
+
+      <label for="skills">Your Skills</label>
+      <input type="text" id="skills" placeholder="e.g. Python, HTML, Design">
+
+      <label for="interests">Your Interests</label>
+      <textarea id="interests" placeholder="e.g. Web development, AI, Teaching"></textarea>
+
+      <label for="level">Experience Level</label>
+      <select id="level">
+        <option value="student">Student</option>
+        <option value="junior">Junior (0-2 yrs)</option>
+        <option value="mid">Mid (2-5 yrs)</option>
+        <option value="senior">Senior (5+ yrs)</option>
+      </select>
+
+      <button type="button" onclick="getGuidance()">Get Guidance</button>
+    </form>
+
+    <div id="output"></div>
+  </div>
+
+  <script>
+    function getGuidance() {
+      const name = document.getElementById('name').value;
+      const skills = document.getElementById('skills').value.toLowerCase();
+      const interests = document.getElementById('interests').value.toLowerCase();
+      const level = document.getElementById('level').value;
+
+      let suggestion = "";
+
+      if (skills.includes("python") || interests.includes("ai")) {
+        suggestion = "You could explore a career in Data Science or AI Engineering.";
+      } else if (skills.includes("html") || skills.includes("css") || interests.includes("web")) {
+        suggestion = "Web Development might be a great career path for you.";
+      } else if (skills.includes("design") || interests.includes("creative")) {
+        suggestion = "You may enjoy UI/UX Design or Graphic Design careers.";
+      } else if (interests.includes("teaching")) {
+        suggestion = "A career in Education or Corporate Training could suit you well.";
+      } else {
+        suggestion = "Try exploring careers in Software Development, Marketing, or Project Management.";
+      }
+
+      document.getElementById('output').innerHTML = `
+        <div class="result">
+          <h3>Hello ${name || "Friend"}!</h3>
+          <p><strong>Career Suggestion:</strong> ${suggestion}</p>
+          <p><strong>Experience Level:</strong> ${level}</p>
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>
